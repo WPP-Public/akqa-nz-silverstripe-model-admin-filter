@@ -1,0 +1,15 @@
+{
+    "name": "heyday/model-admin-filter",
+    "description": "Custom filters collection for Silverstripe Model Admin GridField",
+    "type": "library",
+    "require": {
+        "silverstripe/framework": "^4"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ryan DJ",
+            "email": "ryan.djoenaidi@wundermanthompson.com"
+        }
+    ]
+}
