@@ -14,8 +14,23 @@ Custom filters collection for Silverstripe Model Admin GridField.
     extensions:
         - Heyday\ModelAdminFilter\FilterExtension
     ```
-
 - In your model admin, add this function:
+    ```
+    /**
+     * {@inheritdoc}
+     */
+    public function getList()
+    {
+        $list = parent::getList();
+        $list = $this->getFilteredList($list);
+
+        return $list;
+    }
+    ```
+    
+`getFilteredList` will return filtered list from custom filter.
+
+- Also in your model admin, add this function to add custom filter fields:
     ```
     /**
      * List of ModelAdminFilter custom fields

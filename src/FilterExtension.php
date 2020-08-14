@@ -92,7 +92,7 @@ class FilterExtension extends Extension
     /**
      * Update model admin list based on param
      */
-    public function updateList(DataList $list)
+    public function getFilteredList(DataList $list)
     {
         // get search params
         $params = $this->getFilterParams();
