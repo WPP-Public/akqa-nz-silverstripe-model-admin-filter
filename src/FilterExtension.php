@@ -3,6 +3,7 @@
 namespace Heyday\ModelAdminFilter;
 
 use SilverStripe\Core\Extension;
+use SilverStripe\ORM\DataList;
 use Heyday\ModelAdminFilter\FilterType;
 
 /**
@@ -89,12 +90,10 @@ class FilterExtension extends Extension
     }
 
     /**
-     * {@inheritdoc}
+     * Update model admin list based on param
      */
-    public function getList()
+    public function updateList(DataList $list)
     {
-        $list = $this->owner->getList();
-
         // get search params
         $params = $this->getFilterParams();
 
