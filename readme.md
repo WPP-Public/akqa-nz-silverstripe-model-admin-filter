@@ -28,7 +28,7 @@ Custom filters collection for Silverstripe Model Admin GridField.
     }
     ```
     
-`getFilteredList` will return filtered list from custom filter.
+    `getFilteredList` will return filtered list from custom filter.
 
 - Also in your model admin, add this function to add custom filter fields:
     ```
@@ -50,8 +50,8 @@ Custom filters collection for Silverstripe Model Admin GridField.
     }
     ```
 
-The example above will add custom filter of `dateRange` which is a date range filter of `Created` field.
-This filter will display record where `Created` dates are between selected range.
+    The example above will add custom filter of `dateRange` which is a date range filter of `Created` field.
+    This filter will display record where `Created` dates are between selected range.
 
 ## Common Field Attribute
 
