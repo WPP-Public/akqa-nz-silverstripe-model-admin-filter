@@ -100,7 +100,7 @@ Options:
 
 ## Search By Keyword
 
-Filter record by keyword, add this function in model admin
+Filter record by keyword, add this function in model admin:
 
 ```
 /**
