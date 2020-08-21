@@ -11,8 +11,8 @@ Custom filters collection for Silverstripe Model Admin GridField.
 - Extend model admin:
     ```
     MyProject\ModelAdmin\MyAdmin:
-    extensions:
-        - Heyday\ModelAdminFilter\FilterExtension
+        extensions:
+            - Heyday\ModelAdminFilter\FilterExtension
     ```
 - In your model admin, add this function:
     ```
