@@ -40,7 +40,7 @@ Custom filters collection for Silverstripe Model Admin GridField.
         return [
             [
                 'fieldName' => 'Created',
-                'fieldType' => 'dateRange',
+                'fieldType' => 'dateTimeRange',
                 'options' => [
                     'beginTitle' => 'Create Date Begin',
                     'endTitle' => 'Create Date End'
@@ -50,8 +50,8 @@ Custom filters collection for Silverstripe Model Admin GridField.
     }
     ```
 
-    The example above will add custom filter of `dateRange` which is a date range filter of `Created` field.
-    This filter will display record where `Created` dates are between selected range.
+    The example above will add custom filter of `dateTimeRange` which is a date time range filter of `Created` field.
+    This filter will display record where `Created` dates and times are between selected range.
 
 ## Common Field Attribute
 
@@ -78,3 +78,49 @@ Filter record by date range of selected date field.
 Options:
 - `beginTitle`: custom begin label
 - `endTitle`: custom end label
+
+### dateTimeRange
+
+Filter record by date and time range of selected date field.
+
+```
+[
+    'fieldName' => 'Created',
+    'fieldType' => 'dateTimeRange',
+    'options' => [
+        'beginTitle' => 'Create Time Begin',
+        'endTitle' => 'Create Time End'
+    ]
+]
+```
+
+Options:
+- `beginTitle`: custom begin label
+- `endTitle`: custom end label
+
+## Search By Keyword
+
+Filter record by keyword, add this function in model admin
+
+```
+/**
+ * List of fields filtered by keyword
+ */
+public function keywordSearchFilter(): array
+{
+    return [
+        'fieldsToMatch' => [
+            'FirstName' => 'PartialMatch',
+            'LastName' => 'PartialMatch',
+        ],
+        'options' => [
+            'title' => 'Search Exactly',
+        ],
+    ];
+}
+```
+
+Fields To Match: `'[DBFieldName]' => '[MatchType]'`. If `MatchType` is not `PartialMatch`, Exact Match will be assumed.
+
+Options:
+- `title`: custom label
