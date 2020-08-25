@@ -3,6 +3,7 @@
 namespace Heyday\ModelAdminFilter;
 
 use SilverStripe\Core\Extension;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataList;
 use Heyday\ModelAdminFilter\FilterType;
 
@@ -18,6 +19,21 @@ class FilterExtension extends Extension
      */
     public function updateSearchContext($context)
     {
+        // If hide default filters is true
+        if ($this->owner->hasMethod('hideDefaultFilters') && $this->owner->hideDefaultFilters()) {
+            $context->setFields(FieldList::create());
+        }
+
+        // Add keyword search field if configured from model admin
+        $keywordSearchFilter = $this->owner->hasMethod('keywordSearchFilter') ? $this->owner->keywordSearchFilter() : [];
+
+        if (!empty($keywordSearchFilter)) {
+            $title = $keywordSearchFilter['options']['title'] ?? '';
+            $keywordSearchField = FilterType::getKeywordSearchFilter($title);
+
+            $context->getFields()->push($keywordSearchField);
+        }
+
         // Add extra search fields if configured from model admin
         $extraFilterFields = $this->owner->hasMethod('extraFilterFields') ? $this->owner->extraFilterFields() : [];
 
@@ -45,16 +61,6 @@ class FilterExtension extends Extension
 
                     break;
             }
-        }
-
-        // Add keyword search field if configured from model admin
-        $keywordSearchFilter = $this->owner->hasMethod('keywordSearchFilter') ? $this->owner->keywordSearchFilter() : [];
-
-        if (!empty($keywordSearchFilter)) {
-            $title = $keywordSearchFilter['options']['title'] ?? '';
-            $keywordSearchField = FilterType::getKeywordSearchFilter($title);
-
-            $context->getFields()->push($keywordSearchField);
         }
 
         return $context;
