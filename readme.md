@@ -124,3 +124,17 @@ Fields To Match: `'[DBFieldName]' => '[MatchType]'`. If `MatchType` is not `Part
 
 Options:
 - `title`: custom label
+
+## Hide Default Filters
+
+Sometimes we need to hide auto-generated filters, such as `$summary_fields` in `DataObject`. Add this function in model admin: 
+
+```
+/**
+ * Hide default filters of data objects
+ */
+public function hideDefaultFilters(): bool
+{
+    return true;
+}
+```
