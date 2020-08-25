@@ -47,8 +47,8 @@ class FilterExtension extends Extension
                     $endTitle = $field['options']['endTitle'] ?? '';
                     $dateRangeField = FilterType::getDateRangeFilter($fieldName, $beginTitle, $endTitle);
 
-                    $context->getFields()->push($dateRangeField['beginDate']);
-                    $context->getFields()->push($dateRangeField['endDate']);
+                    $context->getFields()->push($dateRangeField['begin']);
+                    $context->getFields()->push($dateRangeField['end']);
 
                     break;
                 case 'dateTimeRange':
@@ -56,8 +56,17 @@ class FilterExtension extends Extension
                     $endTitle = $field['options']['endTitle'] ?? '';
                     $dateTimeRangeField = FilterType::getDateTimeRangeFilter($fieldName, $beginTitle, $endTitle);
 
-                    $context->getFields()->push($dateTimeRangeField['beginDateTime']);
-                    $context->getFields()->push($dateTimeRangeField['endDateTime']);
+                    $context->getFields()->push($dateTimeRangeField['begin']);
+                    $context->getFields()->push($dateTimeRangeField['end']);
+
+                    break;
+                case 'numericRange':
+                    $beginTitle = $field['options']['beginTitle'] ?? '';
+                    $endTitle = $field['options']['endTitle'] ?? '';
+                    $numericRangeField = FilterType::getNumericRangeFilter($fieldName, $beginTitle, $endTitle);
+
+                    $context->getFields()->push($numericRangeField['begin']);
+                    $context->getFields()->push($numericRangeField['end']);
 
                     break;
             }

@@ -69,8 +69,8 @@ Filter record by date range of selected date field.
     'fieldName' => 'Created',
     'fieldType' => 'dateRange',
     'options' => [
-        'beginTitle' => 'Create Date Begin',
-        'endTitle' => 'Create Date End'
+        'beginTitle' => 'Create Date From',
+        'endTitle' => 'Create Date To'
     ]
 ]
 ```
@@ -88,8 +88,27 @@ Filter record by date and time range of selected date field.
     'fieldName' => 'Created',
     'fieldType' => 'dateTimeRange',
     'options' => [
-        'beginTitle' => 'Create Time Begin',
-        'endTitle' => 'Create Time End'
+        'beginTitle' => 'Create Time From',
+        'endTitle' => 'Create Time To'
+    ]
+]
+```
+
+Options:
+- `beginTitle`: custom begin label
+- `endTitle`: custom end label
+
+### numericRange
+
+Filter record by numeric range of selected date field.
+
+```
+[
+    'fieldName' => 'Weight',
+    'fieldType' => 'numericRange',
+    'options' => [
+        'beginTitle' => 'Weight From',
+        'endTitle' => 'Weight To'
     ]
 ]
 ```

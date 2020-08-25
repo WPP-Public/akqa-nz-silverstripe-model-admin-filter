@@ -4,6 +4,7 @@ namespace Heyday\ModelAdminFilter;
 
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DatetimeField;
+use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\TextField;
 
 /**
@@ -14,30 +15,45 @@ class FilterType
     /**
      * Add date range filter
      */
-    public static function getDateRangeFilter(string $dateField, string $beginTitle = '', string $endTitle = ''): array
+    public static function getDateRangeFilter(string $field, string $beginTitle = '', string $endTitle = ''): array
     {
-        $dateTitle = self::getFieldLabel($dateField);
-        $beginTitle = !empty($beginTitle) ? $beginTitle : $dateTitle . ' Begin';
-        $endTitle = !empty($endTitle) ? $endTitle : $dateTitle . ' End';
+        $title = self::getFieldLabel($field);
+        $beginTitle = !empty($beginTitle) ? $beginTitle : $title . ' Begin';
+        $endTitle = !empty($endTitle) ? $endTitle : $title . ' End';
 
         return [
-            'beginDate' => DateField::create($dateField . ':GreaterThanOrEqual', $beginTitle),
-            'endDate' => DateField::create($dateField . ':LessThanOrEqual', $endTitle)
+            'begin' => DateField::create($field . ':GreaterThanOrEqual', $beginTitle),
+            'end' => DateField::create($field . ':LessThanOrEqual', $endTitle)
         ];
     }
 
     /**
      * Add date time range filter
      */
-    public static function getDateTimeRangeFilter(string $dateTimeField, string $beginTitle = '', string $endTitle = ''): array
+    public static function getDateTimeRangeFilter(string $field, string $beginTitle = '', string $endTitle = ''): array
     {
-        $dateTimeTitle = self::getFieldLabel($dateTimeField);
-        $beginTitle = !empty($beginTitle) ? $beginTitle : $dateTimeTitle . ' Begin';
-        $endTitle = !empty($endTitle) ? $endTitle : $dateTimeTitle . ' End';
+        $title = self::getFieldLabel($field);
+        $beginTitle = !empty($beginTitle) ? $beginTitle : $title . ' Begin';
+        $endTitle = !empty($endTitle) ? $endTitle : $title . ' End';
 
         return [
-            'beginDateTime' => DatetimeField::create($dateTimeField . ':GreaterThanOrEqual', $beginTitle),
-            'endDateTime' => DatetimeField::create($dateTimeField . ':LessThanOrEqual', $endTitle)
+            'begin' => DatetimeField::create($field . ':GreaterThanOrEqual', $beginTitle),
+            'end' => DatetimeField::create($field . ':LessThanOrEqual', $endTitle)
+        ];
+    }
+
+    /**
+     * Add numeric range filter
+     */
+    public static function getNumericRangeFilter(string $field, string $beginTitle = '', string $endTitle = ''): array
+    {
+        $title = self::getFieldLabel($field);
+        $beginTitle = !empty($beginTitle) ? $beginTitle : $title . ' Begin';
+        $endTitle = !empty($endTitle) ? $endTitle : $title . ' End';
+
+        return [
+            'begin' => NumericField::create($field . ':GreaterThanOrEqual', $beginTitle),
+            'end' => NumericField::create($field . ':LessThanOrEqual', $endTitle)
         ];
     }
 
