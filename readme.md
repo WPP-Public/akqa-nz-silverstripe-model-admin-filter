@@ -60,6 +60,16 @@ Custom filters collection for Silverstripe Model Admin GridField.
 
 ## Available Filter Fields Type
 
+Range filters:
+
+- [dateRange](#dateRange)
+- [dateTimeRange](#dateTimeRange)
+- [numericRange](#numericRange)
+
+Search by Keyword filters:
+
+- [Search By Keyword](#search-by-keyword)
+
 ### dateRange
 
 Filter record by date range of selected date field.
