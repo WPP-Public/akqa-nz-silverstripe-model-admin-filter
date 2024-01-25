@@ -4,54 +4,56 @@ Custom filters collection for Silverstripe Model Admin GridField.
 
 ## Installation
 
-- SilverStripe 4 `composer require heyday/model-admin-filter`
+- SilverStripe 5 `composer require heyday/model-admin-filter`
 
 ## Quick Usage
 
 - Extend model admin:
-    ```
-    MyProject\ModelAdmin\MyAdmin:
-        extensions:
-            - Heyday\ModelAdminFilter\FilterExtension
-    ```
+  ```
+  MyProject\ModelAdmin\MyAdmin:
+      extensions:
+          - Heyday\ModelAdminFilter\FilterExtension
+  ```
 - In your model admin, add this function:
-    ```
-    /**
-     * {@inheritdoc}
-     */
-    public function getList()
-    {
-        $list = parent::getList();
-        $list = $this->getFilteredList($list);
 
-        return $list;
-    }
-    ```
-    
-    `getFilteredList` will return filtered list from custom filter.
+  ```
+  /**
+   * {@inheritdoc}
+   */
+  public function getList()
+  {
+      $list = parent::getList();
+      $list = $this->getFilteredList($list);
+
+      return $list;
+  }
+  ```
+
+  `getFilteredList` will return filtered list from custom filter.
 
 - Also in your model admin, add this function to add custom filter fields:
-    ```
-    /**
-     * List of ModelAdminFilter custom fields
-     */
-    public function extraFilterFields(): array
-    {
-        return [
-            [
-                'fieldName' => 'Created',
-                'fieldType' => 'dateTimeRange',
-                'options' => [
-                    'beginTitle' => 'Create Date Begin',
-                    'endTitle' => 'Create Date End'
-                ]
-            ]
-        ];
-    }
-    ```
 
-    The example above will add custom filter of `dateTimeRange` which is a date time range filter of `Created` field.
-    This filter will display record where `Created` dates and times are between selected range.
+  ```
+  /**
+   * List of ModelAdminFilter custom fields
+   */
+  public function extraFilterFields(): array
+  {
+      return [
+          [
+              'fieldName' => 'Created',
+              'fieldType' => 'dateTimeRange',
+              'options' => [
+                  'beginTitle' => 'Create Date Begin',
+                  'endTitle' => 'Create Date End'
+              ]
+          ]
+      ];
+  }
+  ```
+
+  The example above will add custom filter of `dateTimeRange` which is a date time range filter of `Created` field.
+  This filter will display record where `Created` dates and times are between selected range.
 
 ## Common Field Attribute
 
@@ -86,6 +88,7 @@ Filter record by date range of selected date field.
 ```
 
 Options:
+
 - `beginTitle`: custom begin label
 - `endTitle`: custom end label
 
@@ -105,6 +108,7 @@ Filter record by date and time range of selected date field.
 ```
 
 Options:
+
 - `beginTitle`: custom begin label
 - `endTitle`: custom end label
 
@@ -124,6 +128,7 @@ Filter record by numeric range of selected date field.
 ```
 
 Options:
+
 - `beginTitle`: custom begin label
 - `endTitle`: custom end label
 
@@ -152,11 +157,12 @@ public function keywordSearchFilter(): array
 Fields To Match: `'[DBFieldName]' => '[MatchType]'`. If `MatchType` is not `PartialMatch`, Exact Match will be assumed.
 
 Options:
+
 - `title`: custom label
 
 ## Hide Default Filters
 
-Sometimes we need to hide auto-generated filters, such as `$summary_fields` in `DataObject`. Add this function in model admin: 
+Sometimes we need to hide auto-generated filters, such as `$summary_fields` in `DataObject`. Add this function in model admin:
 
 ```
 /**
