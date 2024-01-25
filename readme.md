@@ -4,56 +4,59 @@ Custom filters collection for Silverstripe Model Admin GridField.
 
 ## Installation
 
-- SilverStripe 5 `composer require heyday/model-admin-filter`
+For Silverstripe 5
+`composer require heyday/model-admin-filter`
 
 ## Quick Usage
 
-- Extend model admin:
-  ```
-  MyProject\ModelAdmin\MyAdmin:
-      extensions:
-          - Heyday\ModelAdminFilter\FilterExtension
-  ```
-- In your model admin, add this function:
+Extend model admin:
 
-  ```
-  /**
-   * {@inheritdoc}
-   */
-  public function getList()
-  {
-      $list = parent::getList();
-      $list = $this->getFilteredList($list);
+```
+MyProject\ModelAdmin\MyAdmin:
+    extensions:
+        - Heyday\ModelAdminFilter\FilterExtension
+```
 
-      return $list;
-  }
-  ```
+In your model admin, add this function:
 
-  `getFilteredList` will return filtered list from custom filter.
+```
+/**
+ * {@inheritdoc}
+ */
+public function getList()
+{
+    $list = parent::getList();
+    $list = $this->getFilteredList($list);
 
-- Also in your model admin, add this function to add custom filter fields:
+    return $list;
+}
+```
 
-  ```
-  /**
-   * List of ModelAdminFilter custom fields
-   */
-  public function extraFilterFields(): array
-  {
-      return [
-          [
-              'fieldName' => 'Created',
-              'fieldType' => 'dateTimeRange',
-              'options' => [
-                  'beginTitle' => 'Create Date Begin',
-                  'endTitle' => 'Create Date End'
-              ]
-          ]
-      ];
-  }
-  ```
+`getFilteredList` will return filtered list from custom filter.
 
-  The example above will add custom filter of `dateTimeRange` which is a date time range filter of `Created` field.
-  This filter will display record where `Created` dates and times are between selected range.
+Also in your model admin, add this function to add custom filter fields:
+
+```
+/**
+ * List of ModelAdminFilter custom fields
+ */
+public function extraFilterFields(): array
+{
+    return [
+        [
+            'fieldName' => 'Created',
+            'fieldType' => 'dateTimeRange',
+            'options' => [
+                'beginTitle' => 'Create Date Begin',
+                'endTitle' => 'Create Date End'
+            ]
+        ]
+    ];
+}
+```
+
+The example above will add custom filter of `dateTimeRange` which is a date time range filter of `Created` field.
+This filter will display record where `Created` dates and times are between selected range.
 
 ## Common Field Attribute
 
