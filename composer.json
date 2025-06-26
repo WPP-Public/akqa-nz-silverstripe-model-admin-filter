@@ -3,7 +3,7 @@
     "description": "Custom filters collection for Silverstripe Model Admin GridField",
     "type": "library",
     "require": {
-        "silverstripe/framework": "^5"
+        "silverstripe/framework": "^6"
     },
     "autoload": {
         "psr-4": {
@@ -16,5 +16,11 @@
             "name": "Ryan DJ",
             "email": "ryan.djoenaidi@wundermanthompson.com"
         }
-    ]
+    ],
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true
+        }
+    }
 }
